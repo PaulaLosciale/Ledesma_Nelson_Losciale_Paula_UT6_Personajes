@@ -1,31 +1,19 @@
-// Subclase heredada de Persobaje
-class PersonajeMagico extends Personaje {
+package modelo.personajes;
 
-    // Constructor heredado
-    public PersonajeMagico(String nombre, int nivel, double salud) {
+public abstract class PersonajeMagico extends Personaje {
+    protected int mana;
+
+    public PersonajeMagico(String nombre, int nivel, double salud, int mana) {
         super(nombre, nivel, salud);
+        this.mana = mana;
     }
 
-    /**
-     * Metodo abstracto heredado de la superclase Personaje
-     * Pero sobreescrito por la subclase
-     */
-    @Override
-    public void atacar() {
-        System.out.println("Ataque mediante hechizos magicos...");
+    public void meditar() {
+        this.mana += 10;
+        System.out.println(nombre + " medita y recupera 10 de maná");
     }
 
-    // Metodo propio de la subclase
-    public void poderMagicoExtra() {
-        System.out.println("No sufre daño durante 40seg...");
+    public int getMana() {
+        return mana;
     }
-
-    public void mostrarInformacion() {
-        System.out.println("Nombre: " + nombre);
-        System.out.println("Nivel: " + nivel);
-        System.out.println("Salud: " + salud);
-        atacar();
-        poderMagicoExtra();
-    }
-
 }

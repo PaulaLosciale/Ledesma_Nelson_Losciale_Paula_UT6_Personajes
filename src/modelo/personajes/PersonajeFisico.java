@@ -1,31 +1,19 @@
-// Sublclase heredada de Personaje
-class PersonajeFisico extends Personaje {
+package modelo.personajes;
 
-    // Constructor heredado
-    public PersonajeFisico(String nombre, int nivel, double salud) {
+public abstract class PersonajeFisico extends Personaje {
+    protected int fuerza;
+
+    public PersonajeFisico(String nombre, int nivel, double salud, int fuerza) {
         super(nombre, nivel, salud);
+        this.fuerza = fuerza;
     }
 
-    /**
-     * Metodo abstracto heredado de la superclase Personaje
-     * Pero sobreescrito por la subclase
-     */
-    @Override
-    public void atacar() {
-        System.out.println("Ataca Físicamente...");
-    }
-    
-    // Metodo propio de la subclase
-    public void poderFisicoExtra() {
-        System.out.println("Fuerza doble por 20 segundos..");
+    public void entrenar() {
+        this.fuerza += 5;
+        System.out.println(nombre + " ha entrenado! Fuerza aumentada a " + fuerza);
     }
 
-    public void mostrarInformacion() {
-        System.out.println("Nombre: " + nombre);
-        System.out.println("Nivel: " + nivel);
-        System.out.println("Salud: " + salud);
-        atacar();
-        poderFisicoExtra();
+    public int getFuerza() {
+        return fuerza;
     }
-
 }
